@@ -1,0 +1,66 @@
+#include<iostream>
+#include<cstdlib>
+
+using namespace std;
+
+struct node{
+    int num;
+    struct node *next;
+};
+
+node *head;
+
+
+void insertfirst(int n)
+{
+    node *temp;
+    temp=(node*)malloc(sizeof(node));
+
+    temp->num=n;
+    temp->next=head;
+    head=temp;
+}
+
+void insertlast(int a)
+{
+	node *test=new node;
+	test->num=a;
+	test->next=NULL;
+	node *temp=head;
+	while(temp->next!=NULL)
+	{
+		temp=temp->next;
+	}
+	test->next=temp->next;
+	temp->next=test;
+}
+
+void print()
+{
+    node *temp;
+    temp=(node*)malloc(sizeof(node));
+    temp=head;
+    for(;temp!=NULL;)
+    {
+        cout<<temp->num<<endl;
+        temp=temp->next;
+    }
+}
+
+int main(void)
+{
+    head=(node*)malloc(sizeof(node));
+    head=NULL;
+    insertfirst(5);
+    insertfirst(4);
+    insertfirst(3);
+    insertfirst(2);
+    insertfirst(1);
+    insertfirst(0);
+    insertlast(6);
+    insertlast(7);
+    insertlast(8);
+    insertlast(9);
+    print();
+    return 0;
+}
